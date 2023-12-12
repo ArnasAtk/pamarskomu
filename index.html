@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>PAMARSKOMU</h1>
+	<p>ZAISKIME!!! Pasirink akmuo popierius arba zirkles!</p>
+	<button onclick="playGame();">ZAIDIMAS</button>
+	<script>
+		function playGame(){
+			const userChoice = zaidejoPasirinkimas(prompt('Pasirink akmuo, popierius arba zirkles'));
+			const computerChoice = kompiuterioPasirinkimas();
+			
+			alert('Tavo metimas: ' + userChoice);
+			alert('Kompiuterio metimas' + computerChoice);
+			alert(nustatytiLaimetoja(userChoice, computerChoice));
+			
+			document.write('Tavo metimas: ' + userChoice + '<br>');
+			document.write('Kompiuterio metimas : ' + computerChoice + '<br>');
+			document.write(nustatytiLaimetoja(userChoice, computerChoice));
+
+		}
+
+		function zaidejoPasirinkimas(userInput){
+			userInput = userInput.toLowerCase();
+			if (userInput === 'akmuo' || userInput === 'popierius' || userInput === 'žirklės') {
+				return userInput;
+			} else {
+				console.log('ERROR');
+			};
+		};
+
+		function kompiuterioPasirinkimas(){
+			const randomNumber = Math.floor(Math.random() * 3);
+
+			switch (randomNumber) {
+				case 0:
+					return 'akmuo';
+					break;
+
+				case 1:
+					return 'popierius';
+					break;
+
+				case 2:
+					return 'žirklės';
+					break;
+
+				default:
+					return 'ERROR';
+					break;
+			};
+		};
+
+		function nustatytiLaimetoja(userChoice, computerChoice){
+			if (userChoice === computerChoice){
+				return 'Lygiosios';
+			}
+			if (userChoice === 'akmuo'){
+				if (computerChoice === 'popierius'){
+					return 'Kompiuteris laimejo';
+				} else {
+					return 'Laimejote!';
+				};
+			};
+		};
+
+
+		if (userChoice === 'popierius'){
+			if (computerChoice === 'žirklės'){
+				return 'Kompiuteris laimejo';
+			}else{
+				return 'Laimejote';
+			};
+
+		if (userChoice === 'žirklės'){
+			if (computerChoice === 'akmuo'){
+				return 'Kompiuteris laimejo';
+			} else{
+				return 'Laimejote';
+			};
+		};
+	</script>
+</body>
+</html>
